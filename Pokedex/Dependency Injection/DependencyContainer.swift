@@ -11,7 +11,9 @@ struct DependencyContainer {
     private static var shared = DependencyContainer()
 
     /// A static subscript accessor for reading dependencies in the shared container.
-    static subscript<Value>(_ keyPath: KeyPath<DependencyContainer, Value>) -> Value {
+    static subscript<Value>(
+        _ keyPath: KeyPath<DependencyContainer, Value>
+    ) -> Value {
         shared[keyPath: keyPath]
     }
 }
@@ -19,7 +21,13 @@ struct DependencyContainer {
 // MARK: - Network
 
 extension DependencyContainer {
-    var network: Network {
-        NetworkService(session: .default)
-    }
+    static let network: Network = NetworkService(
+        session: .default
+    )
+}
+
+// MARK: - PokemonService
+
+extension DependencyContainer {
+    static let pokemonService: PokemonService = DefaultPokemonService()
 }
