@@ -20,11 +20,9 @@ struct Endpoint: URLConvertible {
 
 extension Endpoint {
     func append(queryItems: [URLQueryItem]) -> Endpoint {
-        Endpoint(
-            baseURL: baseURL,
-            path: path,
-            queryItems: (self.queryItems ?? []) + queryItems
-        )
+        var copy = self
+        copy.queryItems = (copy.queryItems ?? []) + queryItems
+        return copy
     }
 }
 
