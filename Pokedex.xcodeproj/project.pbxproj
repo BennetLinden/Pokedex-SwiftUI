@@ -10,6 +10,8 @@
 		4F2609432E195B0D00F4F4FE /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2609422E195B0D00F4F4FE /* URL+Extensions.swift */; };
 		4F2609452E195DEB00F4F4FE /* Endpoint+Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2609442E195DEB00F4F4FE /* Endpoint+Pokemon.swift */; };
 		4F2609482E195E1400F4F4FE /* GetAllPokemonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2609472E195E1400F4F4FE /* GetAllPokemonRequest.swift */; };
+		4F26094B2E19974D00F4F4FE /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26094A2E19974D00F4F4FE /* DependencyContainer.swift */; };
+		4F26094F2E19989000F4F4FE /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26094E2E19989000F4F4FE /* Injected.swift */; };
 		4FDF237E2E19344D00B0E44D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4FDF237D2E19344D00B0E44D /* Alamofire */; };
 		4FDF23D12E194C8000B0E44D /* Logger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF23C12E194C8000B0E44D /* Logger+Extensions.swift */; };
 		4FDF23D22E194C8000B0E44D /* StringInterpolation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF23C32E194C8000B0E44D /* StringInterpolation+Extensions.swift */; };
@@ -31,6 +33,8 @@
 		4F2609422E195B0D00F4F4FE /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		4F2609442E195DEB00F4F4FE /* Endpoint+Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Endpoint+Pokemon.swift"; sourceTree = "<group>"; };
 		4F2609472E195E1400F4F4FE /* GetAllPokemonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPokemonRequest.swift; sourceTree = "<group>"; };
+		4F26094A2E19974D00F4F4FE /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		4F26094E2E19989000F4F4FE /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		4FDF236E2E19316F00B0E44D /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDF23C12E194C8000B0E44D /* Logger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extensions.swift"; sourceTree = "<group>"; };
 		4FDF23C32E194C8000B0E44D /* StringInterpolation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringInterpolation+Extensions.swift"; sourceTree = "<group>"; };
@@ -81,6 +85,15 @@
 				4F2609472E195E1400F4F4FE /* GetAllPokemonRequest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		4F2609492E19971700F4F4FE /* Dependency Injection */ = {
+			isa = PBXGroup;
+			children = (
+				4F26094A2E19974D00F4F4FE /* DependencyContainer.swift */,
+				4F26094E2E19989000F4F4FE /* Injected.swift */,
+			);
+			path = "Dependency Injection";
 			sourceTree = "<group>";
 		};
 		4FDF23652E19316F00B0E44D = {
@@ -149,6 +162,7 @@
 		4FDF23D02E194C8000B0E44D /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				4F2609492E19971700F4F4FE /* Dependency Injection */,
 				4FDF23C52E194C8000B0E44D /* Extensions */,
 				4FDF23CC2E194C8000B0E44D /* Network */,
 				4F2609402E19597400F4F4FE /* Data */,
@@ -267,8 +281,10 @@
 				4FDF23D62E194C8000B0E44D /* NetworkRequest.swift in Sources */,
 				4FDF23D72E194C8000B0E44D /* NetworkService.swift in Sources */,
 				4FDF23D82E194C8000B0E44D /* ContentView.swift in Sources */,
+				4F26094F2E19989000F4F4FE /* Injected.swift in Sources */,
 				4FDF23E32E1952CA00B0E44D /* EncodableNetworkRequest.swift in Sources */,
 				4FDF23DE2E19525900B0E44D /* JSONDecoder+Extensions.swift in Sources */,
+				4F26094B2E19974D00F4F4FE /* DependencyContainer.swift in Sources */,
 				4FDF23DF2E19525900B0E44D /* JSONEncoder+Extensions.swift in Sources */,
 				4FDF23E12E1952C400B0E44D /* DictionaryNetworkRequest.swift in Sources */,
 				4FDF23D92E194C8000B0E44D /* PokedexApp.swift in Sources */,
