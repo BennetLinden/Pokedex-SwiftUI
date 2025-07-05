@@ -14,6 +14,7 @@
 		4F26094F2E19989000F4F4FE /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26094E2E19989000F4F4FE /* Injected.swift */; };
 		4F2609522E1998D900F4F4FE /* PokemonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2609512E1998D900F4F4FE /* PokemonService.swift */; };
 		4F2609562E199C3B00F4F4FE /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2609552E199C3B00F4F4FE /* InjectionKey.swift */; };
+		4F26095B2E199F1000F4F4FE /* GetAllPokemonUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F26095A2E199F1000F4F4FE /* GetAllPokemonUseCase.swift */; };
 		4FDF237E2E19344D00B0E44D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4FDF237D2E19344D00B0E44D /* Alamofire */; };
 		4FDF23D12E194C8000B0E44D /* Logger+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF23C12E194C8000B0E44D /* Logger+Extensions.swift */; };
 		4FDF23D22E194C8000B0E44D /* StringInterpolation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FDF23C32E194C8000B0E44D /* StringInterpolation+Extensions.swift */; };
@@ -39,6 +40,7 @@
 		4F26094E2E19989000F4F4FE /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		4F2609512E1998D900F4F4FE /* PokemonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonService.swift; sourceTree = "<group>"; };
 		4F2609552E199C3B00F4F4FE /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
+		4F26095A2E199F1000F4F4FE /* GetAllPokemonUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllPokemonUseCase.swift; sourceTree = "<group>"; };
 		4FDF236E2E19316F00B0E44D /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FDF23C12E194C8000B0E44D /* Logger+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extensions.swift"; sourceTree = "<group>"; };
 		4FDF23C32E194C8000B0E44D /* StringInterpolation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringInterpolation+Extensions.swift"; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		4F2609402E19597400F4F4FE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4F2609572E199DBD00F4F4FE /* Model */,
 				4F2609502E1998C700F4F4FE /* Service */,
 				4F2609462E195E0700F4F4FE /* Request */,
 			);
@@ -108,6 +111,29 @@
 				4F2609512E1998D900F4F4FE /* PokemonService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		4F2609572E199DBD00F4F4FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4F2609582E199EEF00F4F4FE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4F2609592E199EFA00F4F4FE /* Use Case */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4F2609592E199EFA00F4F4FE /* Use Case */ = {
+			isa = PBXGroup;
+			children = (
+				4F26095A2E199F1000F4F4FE /* GetAllPokemonUseCase.swift */,
+			);
+			path = "Use Case";
 			sourceTree = "<group>";
 		};
 		4FDF23652E19316F00B0E44D = {
@@ -179,6 +205,7 @@
 				4F2609492E19971700F4F4FE /* Dependency Injection */,
 				4FDF23C52E194C8000B0E44D /* Extensions */,
 				4FDF23CC2E194C8000B0E44D /* Network */,
+				4F2609582E199EEF00F4F4FE /* Domain */,
 				4F2609402E19597400F4F4FE /* Data */,
 				4FDF23CD2E194C8000B0E44D /* Assets.xcassets */,
 				4FDF23CE2E194C8000B0E44D /* ContentView.swift */,
@@ -303,6 +330,7 @@
 				4F26094B2E19974D00F4F4FE /* DependencyContainer.swift in Sources */,
 				4FDF23DF2E19525900B0E44D /* JSONEncoder+Extensions.swift in Sources */,
 				4FDF23E12E1952C400B0E44D /* DictionaryNetworkRequest.swift in Sources */,
+				4F26095B2E199F1000F4F4FE /* GetAllPokemonUseCase.swift in Sources */,
 				4FDF23D92E194C8000B0E44D /* PokedexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
