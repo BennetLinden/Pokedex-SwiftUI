@@ -15,3 +15,11 @@ struct DependencyContainer {
         shared[keyPath: keyPath]
     }
 }
+
+// MARK: - Network
+
+extension DependencyContainer {
+    var network: Network {
+        NetworkService(session: .default)
+    }
+}
