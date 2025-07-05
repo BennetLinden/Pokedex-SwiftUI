@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PokemonService {
-    
+    func getAllPokemon() async throws
 }
 
 actor DefaultPokemonService: PokemonService {
@@ -24,6 +24,14 @@ actor DefaultPokemonService: PokemonService {
         @Injected(\.network) var network
         self.init(
             network: network,
+        )
+    }
+    
+    func getAllPokemon() async throws {
+        try await network.request(
+            GetAllPokemonRequest(
+                limit: 151
+            )
         )
     }
 }
