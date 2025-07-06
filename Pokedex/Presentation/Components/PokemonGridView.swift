@@ -22,7 +22,7 @@ struct PokemonGridView: View {
             ) {
                 ForEach(pokemon) { pokemon in
                     NavigationLink(value: pokemon) {
-                        PokemonItemView(pokemon: pokemon)
+                        PokemonGridItemView(pokemon: pokemon)
                     }
                     .buttonStyle(.plain)
                 }

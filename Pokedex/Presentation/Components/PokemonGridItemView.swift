@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PokemonItemView: View {
+struct PokemonGridItemView: View {
     let pokemon: PokemonListItem
     
     var body: some View {
