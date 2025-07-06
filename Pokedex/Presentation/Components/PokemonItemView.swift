@@ -34,10 +34,11 @@ struct PokemonItemView: View {
                 .font(.caption)
                 .foregroundStyle(.gray)
         }
-        .padding(10)
+        .padding([.horizontal, .top], 4)
+        .padding(.bottom, 8)
         .background {
             Color.white
-                .cornerRadius(10)
+                .cornerRadius(8)
                 .shadow(
                     color: Color.black.opacity(0.1),
                     radius: 5,

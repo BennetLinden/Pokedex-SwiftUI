@@ -17,7 +17,7 @@ struct HomeView: View {
             PokemonGridView(
                 pokemon: pokemon
             )
-            .padding()
+            .padding(.bottom, 20)
             .background(Color.gray.opacity(0.1))
             .ignoresSafeArea(edges: .bottom)
         }
