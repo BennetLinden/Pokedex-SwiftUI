@@ -19,7 +19,14 @@ struct GetAllPokemonUseCase {
         self.init(pokemonService: pokemonService)
     }
     
-    func callAsFunction() async throws {
+    func callAsFunction() async throws -> [PokemonListItem] {
         try await pokemonService.getAllPokemon()
+            .results
+            .map { listItem in
+                PokemonListItem(
+                    name: listItem.name,
+                    url: listItem.url
+                )
+            }
     }
 }
