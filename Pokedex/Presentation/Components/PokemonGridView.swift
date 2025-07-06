@@ -21,7 +21,10 @@ struct PokemonGridView: View {
                 spacing: 20
             ) {
                 ForEach(pokemon) { pokemon in
-                    PokemonItemView(pokemon: pokemon)
+                    NavigationLink(value: pokemon) {
+                        PokemonItemView(pokemon: pokemon)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .padding()
