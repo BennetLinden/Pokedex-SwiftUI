@@ -30,9 +30,9 @@ extension Endpoint {
     func asURL() throws -> URL {
         var components = URLComponents(
             url: baseURL,
-            resolvingAgainstBaseURL: true
+            resolvingAgainstBaseURL: false
         )
-        components?.path = path
+        components?.path.append(path)
         components?.queryItems = queryItems
 
         guard let url = components?.url else {
