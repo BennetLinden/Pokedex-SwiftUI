@@ -11,7 +11,10 @@ import Foundation
 
 extension Endpoint {
     static func pokemon(_ pokemon: Pokemon) -> Endpoint {
-        Endpoint(baseURL: .pokemon, path: pokemon.path)
+        Endpoint(
+            baseURL: .pokemonAPI,
+            path: pokemon.path
+        )
     }
     
     enum Pokemon {

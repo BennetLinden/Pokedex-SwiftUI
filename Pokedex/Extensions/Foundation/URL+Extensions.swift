@@ -8,11 +8,11 @@
 import Foundation
 
 extension URL {
-    static let pokemon: URL = {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "pokeapi.co"
-        components.path = "/api"
-        return components.url!
-    }()
+    static let pokemonAPI = URL(
+        string: "https://pokeapi.co/api/"
+    )!
+    
+    static let pokemonImages = URL(
+        string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/"
+    )!
 }
