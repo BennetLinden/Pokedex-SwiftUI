@@ -18,11 +18,11 @@ struct HomeView: View {
                 pokemon: pokemon
             )
             .padding(.bottom, 20)
-            .background(Color.gray.opacity(0.1))
             .ignoresSafeArea(edges: .bottom)
-            .navigationDestination(for: PokemonListItem.self) { pokemonListItem in
-                PokemonDetailView(
-                    pokemonListItem: pokemonListItem
+            .background(Color.gray.opacity(0.1))
+            .navigationDestination(for: PokemonReference.self) { pokemonReference in
+                PokemonDetailsView(
+                    pokemonReference: pokemonReference
                 )
             }
         }

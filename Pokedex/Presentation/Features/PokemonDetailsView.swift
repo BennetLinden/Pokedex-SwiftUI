@@ -1,0 +1,44 @@
+//
+//  PokemonDetailView.swift
+//  Pokedex
+//
+//  Created by Bennet van der Linden on 06/07/2025.
+//
+
+import SwiftUI
+
+struct PokemonDetailsView: View {
+    let getPokemonDetails = GetPokemonUseCase()
+    
+    let pokemonReference: PokemonReference
+    
+    @State private var pokemon: Pokemon?
+    
+    var body: some View {
+        VStack {
+            AsyncImage(url: pokemon?.imageURL) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                case .failure:
+                    EmptyView()
+                @unknown default:
+                    EmptyView()
+                }
+            }
+        }
+        .task {
+            do {
+                pokemon = try await getPokemonDetails(
+                    from: pokemonReference.url
+                )
+            } catch {
+                print(error)
+            }
+        }
+    }
+}
