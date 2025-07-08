@@ -9,6 +9,8 @@ import Foundation
 
 protocol PokemonService {
     func getPokemonReferences() async throws -> ResultsDTO<[NamedResourceDTO]>
+    func getPokemonDetails(from url: URL) async throws -> PokemonDetailsDTO
+    func getPokemonSpecies(from url: URL) async throws -> PokemonSpeciesDTO
 }
 
 actor DefaultPokemonService: PokemonService {
@@ -32,6 +34,22 @@ actor DefaultPokemonService: PokemonService {
             GetPokemonReferencesRequest(
                 limit: 151
             ),
+        )
+    }
+    
+    func getPokemonDetails(from url: URL) async throws -> PokemonDetailsDTO {
+        try await network.request(
+            GetPokemonDetailsRequest(
+                url: url
+            )
+        )
+    }
+    
+    func getPokemonSpecies(from url: URL) async throws -> PokemonSpeciesDTO {
+        try await network.request(
+            GetPokemonSpeciesRequest(
+                url: url
+            )
         )
     }
 }

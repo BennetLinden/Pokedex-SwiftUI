@@ -10,15 +10,25 @@ import Foundation
 struct Pokemon {
     let id: Int
     let name: String
+    let imageURL: URL?
     let height: Int // The height of this Pokémon in decimetres.
     let weight: Int // The weight of this Pokémon in hectograms.
+
+    let isLegendary: Bool
+    let isMythical: Bool
 }
     
 extension Pokemon {
-    init(details: PokemonDetailsDTO) {
-        self.id = details.id
-        self.name = details.name
-        self.height = details.height
-        self.weight = details.weight
+    init(
+        details: PokemonDetailsDTO,
+        species: PokemonSpeciesDTO
+    ) {
+        id = details.id
+        name = details.name
+        imageURL = details.sprites.officialArtworkURL
+        height = details.height
+        weight = details.weight
+        isLegendary = species.isLegendary
+        isMythical = species.isMythical
     }
 }
