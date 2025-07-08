@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct PokemonTypeReference {
+struct PokemonTypeReference: Identifiable {
     let type: PokemonType
     let url: URL
+    
+    var id: String {
+        type.rawValue
+    }
 }

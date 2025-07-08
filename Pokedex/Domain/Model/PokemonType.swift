@@ -27,4 +27,14 @@ enum PokemonType: String {
     case dark
     case fairy
     case stellar
+    
+    var name: String {
+        rawValue.capitalized
+    }
+}
+
+extension PokemonType: Identifiable {
+    var id: String {
+        rawValue
+    }
 }
