@@ -16,6 +16,12 @@ struct PokemonDetailsView: View {
     
     var body: some View {
         VStack {
+            PokemonHeaderView(
+                name: pokemonReference.name,
+                id: pokemonReference.id,
+                types: pokemon?.types.map(\.type) ?? []
+            )
+            
             AsyncImage(url: pokemon?.imageURL) { phase in
                 switch phase {
                 case .empty:
@@ -31,11 +37,13 @@ struct PokemonDetailsView: View {
                 }
             }
         }
+        .padding()
         .task {
             do {
                 pokemon = try await getPokemonDetails(
                     from: pokemonReference.url
                 )
+                print(pokemon!)
             } catch {
                 print(error)
             }

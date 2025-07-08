@@ -28,4 +28,8 @@ extension String.StringInterpolation {
         }
         appendInterpolation(jsonString)
     }
+    
+    mutating func appendInterpolation(pokemonId id: Int) {
+        appendInterpolation(String(format: "%03d", id))
+    }
 }
