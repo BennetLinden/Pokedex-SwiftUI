@@ -26,6 +26,8 @@
 		4F2609782E1AFA0300F4F4FE /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2609772E1AFA0300F4F4FE /* Pokemon.swift */; };
 		4F26097A2E1B000E00F4F4FE /* NamedResourceDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2609792E1B000E00F4F4FE /* NamedResourceDTO.swift */; };
 		4F37308C2E1C41920057F0D9 /* PokemonSpritesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F37308B2E1C41920057F0D9 /* PokemonSpritesDTO.swift */; };
+		4F37308E2E1D15170057F0D9 /* PokemonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F37308D2E1D15170057F0D9 /* PokemonType.swift */; };
+		4F3730902E1D15AC0057F0D9 /* PokemonTypeReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F37308F2E1D15AC0057F0D9 /* PokemonTypeReference.swift */; };
 		4FD691592E1B0354005CAC5F /* PokemonSpeciesDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD691582E1B0354005CAC5F /* PokemonSpeciesDTO.swift */; };
 		4FD6915B2E1B03FB005CAC5F /* GetPokemonSpeciesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD6915A2E1B03FB005CAC5F /* GetPokemonSpeciesRequest.swift */; };
 		4FDF237E2E19344D00B0E44D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4FDF237D2E19344D00B0E44D /* Alamofire */; };
@@ -65,6 +67,8 @@
 		4F2609772E1AFA0300F4F4FE /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		4F2609792E1B000E00F4F4FE /* NamedResourceDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedResourceDTO.swift; sourceTree = "<group>"; };
 		4F37308B2E1C41920057F0D9 /* PokemonSpritesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSpritesDTO.swift; sourceTree = "<group>"; };
+		4F37308D2E1D15170057F0D9 /* PokemonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonType.swift; sourceTree = "<group>"; };
+		4F37308F2E1D15AC0057F0D9 /* PokemonTypeReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeReference.swift; sourceTree = "<group>"; };
 		4FD691582E1B0354005CAC5F /* PokemonSpeciesDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSpeciesDTO.swift; sourceTree = "<group>"; };
 		4FD6915A2E1B03FB005CAC5F /* GetPokemonSpeciesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPokemonSpeciesRequest.swift; sourceTree = "<group>"; };
 		4FDF236E2E19316F00B0E44D /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +173,8 @@
 			children = (
 				4F2609612E1A4FA200F4F4FE /* PokemonReference.swift */,
 				4F2609772E1AFA0300F4F4FE /* Pokemon.swift */,
+				4F37308D2E1D15170057F0D9 /* PokemonType.swift */,
+				4F37308F2E1D15AC0057F0D9 /* PokemonTypeReference.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 				4FDF23D42E194C8000B0E44D /* Network.swift in Sources */,
 				4F2609452E195DEB00F4F4FE /* Endpoint+Pokemon.swift in Sources */,
 				4F37308C2E1C41920057F0D9 /* PokemonSpritesDTO.swift in Sources */,
+				4F3730902E1D15AC0057F0D9 /* PokemonTypeReference.swift in Sources */,
 				4F2609782E1AFA0300F4F4FE /* Pokemon.swift in Sources */,
 				4F2609702E1AAD3800F4F4FE /* PokemonDetailsView.swift in Sources */,
 				4FDF23D52E194C8000B0E44D /* NetworkError.swift in Sources */,
@@ -409,6 +416,7 @@
 				4FDF23E32E1952CA00B0E44D /* EncodableNetworkRequest.swift in Sources */,
 				4FDF23DE2E19525900B0E44D /* JSONDecoder+Extensions.swift in Sources */,
 				4F2609762E1ACC8D00F4F4FE /* GetPokemonUseCase.swift in Sources */,
+				4F37308E2E1D15170057F0D9 /* PokemonType.swift in Sources */,
 				4F26094B2E19974D00F4F4FE /* DependencyContainer.swift in Sources */,
 				4FDF23DF2E19525900B0E44D /* JSONEncoder+Extensions.swift in Sources */,
 				4FDF23E12E1952C400B0E44D /* DictionaryNetworkRequest.swift in Sources */,
