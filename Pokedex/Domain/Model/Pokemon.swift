@@ -26,7 +26,7 @@ extension Pokemon {
         species: PokemonSpeciesDTO
     ) {
         id = details.id
-        name = details.name
+        name = details.name.capitalized
         imageURL = details.sprites.officialArtworkURL
         height = details.height
         weight = details.weight

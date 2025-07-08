@@ -36,6 +36,12 @@ struct PokemonDetailsView: View {
                     EmptyView()
                 }
             }
+            .frame(maxHeight: .infinity, alignment: .top)
+            
+            if let pokemon {
+                PokemonAboutView(pokemon: pokemon)
+                    .padding(.bottom, 24)
+            }
         }
         .padding()
         .task {

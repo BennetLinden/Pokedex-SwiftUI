@@ -13,7 +13,7 @@ struct PokemonHeaderView: View {
     let types: [PokemonType]
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline) {
                 Text(name)
                     .font(.system(size: 32, weight: .bold))
