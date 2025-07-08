@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PokemonGridItemView: View {
-    let pokemon: PokemonListItem
+    let pokemon: PokemonReference
     
     var body: some View {
         VStack {
@@ -30,7 +30,7 @@ struct PokemonGridItemView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .aspectRatio(1, contentMode: .fit)
             
-            Text(pokemon.name.capitalized)
+            Text(pokemon.name)
                 .font(.caption)
                 .foregroundStyle(.gray)
         }

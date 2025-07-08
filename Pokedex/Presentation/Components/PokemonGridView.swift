@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PokemonGridView: View {
-    let pokemon: [PokemonListItem]
+    let pokemon: [PokemonReference]
     
     var body: some View {
         ScrollView {

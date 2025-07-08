@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PokemonService {
-    func getAllPokemon() async throws -> ResultsDTO<[PokemonListItemDTO]>
+    func getPokemonReferences() async throws -> ResultsDTO<[NamedResourceDTO]>
 }
 
 actor DefaultPokemonService: PokemonService {
@@ -27,9 +27,9 @@ actor DefaultPokemonService: PokemonService {
         )
     }
     
-    func getAllPokemon() async throws -> ResultsDTO<[PokemonListItemDTO]> {
+    func getPokemonReferences() async throws -> ResultsDTO<[NamedResourceDTO]> {
         try await network.request(
-            GetAllPokemonRequest(
+            GetPokemonReferencesRequest(
                 limit: 151
             ),
         )

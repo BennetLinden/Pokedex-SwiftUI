@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
-    private let getAllPokemon = GetAllPokemonUseCase()
+    private let getPokemonReferences = GetPokemonReferencesUseCase()
     
-    @State private var pokemon: [PokemonListItem] = []
+    @State private var pokemon: [PokemonReference] = []
     
     var body: some View {
         NavigationStack {
@@ -28,7 +28,7 @@ struct HomeView: View {
         }
         .task {
             do {
-                pokemon = try await getAllPokemon()
+                pokemon = try await getPokemonReferences()
             } catch {
                 print(error)
             }

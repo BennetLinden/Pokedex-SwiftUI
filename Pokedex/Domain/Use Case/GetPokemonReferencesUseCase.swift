@@ -1,5 +1,5 @@
 //
-//  GetAllPokemonUseCase.swift
+//  GetPokemonReferencesUseCase.swift
 //  Pokedex
 //
 //  Created by Bennet van der Linden on 05/07/2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetAllPokemonUseCase {
+struct GetPokemonReferencesUseCase {
     private let pokemonService: PokemonService
     
     init(pokemonService: PokemonService) {
@@ -19,14 +19,9 @@ struct GetAllPokemonUseCase {
         self.init(pokemonService: pokemonService)
     }
     
-    func callAsFunction() async throws -> [PokemonListItem] {
-        try await pokemonService.getAllPokemon()
+    func callAsFunction() async throws -> [PokemonReference] {
+        try await pokemonService.getPokemonReferences()
             .results
-            .map { listItem in
-                PokemonListItem(
-                    name: listItem.name,
-                    url: listItem.url
-                )
-            }
+            .map(PokemonReference.init)
     }
 }
