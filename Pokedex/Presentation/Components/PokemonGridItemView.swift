@@ -31,8 +31,8 @@ struct PokemonGridItemView: View {
             .aspectRatio(1, contentMode: .fit)
             
             Text(pokemon.name)
-                .font(.caption)
-                .foregroundStyle(.gray)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(.gray02)
         }
         .padding([.horizontal, .top], 4)
         .padding(.bottom, 8)

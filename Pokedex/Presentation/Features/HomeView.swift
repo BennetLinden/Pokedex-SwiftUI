@@ -19,13 +19,14 @@ struct HomeView: View {
             )
             .padding(.bottom, 20)
             .ignoresSafeArea(edges: .bottom)
-            .background(Color.gray.opacity(0.1))
+            .background(.gray06)
             .navigationDestination(for: PokemonReference.self) { pokemonReference in
                 PokemonDetailsView(
                     pokemonReference: pokemonReference
                 )
             }
         }
+        .tint(.gray01)
         .task {
             do {
                 pokemon = try await getPokemonReferences()
