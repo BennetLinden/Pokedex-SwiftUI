@@ -16,3 +16,5 @@ extension URL {
         string: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/"
     )!
 }
+
+

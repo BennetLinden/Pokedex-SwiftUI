@@ -13,7 +13,7 @@ enum EndpointError: Error {
 }
 
 struct Endpoint: URLConvertible {
-    let baseURL: URL
+    let baseUrl: URL
     let path: String
     var queryItems: [URLQueryItem]?
 }
@@ -28,17 +28,23 @@ extension Endpoint {
 
 extension Endpoint {
     func asURL() throws -> URL {
-        var components = URLComponents(
-            url: baseURL,
-            resolvingAgainstBaseURL: false
-        )
-        components?.path.append(path)
-        components?.queryItems = queryItems
+        guard
+            var components = URLComponents(
+                url: baseUrl,
+                resolvingAgainstBaseURL: false
+            )
+        else {
+            throw EndpointError.invalidURL
+        }
+        
+        components.append(path: path)
+        components.queryItems = queryItems
 
-        guard let url = components?.url else {
+        guard let url = components.url else {
             throw EndpointError.invalidURL
         }
         
         return url
     }
 }
+

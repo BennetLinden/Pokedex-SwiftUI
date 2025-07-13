@@ -12,7 +12,7 @@ import Foundation
 extension Endpoint {
     static func pokemon(_ pokemon: Pokemon) -> Endpoint {
         Endpoint(
-            baseURL: .pokemonAPI,
+            baseUrl: .pokemonAPI,
             path: pokemon.path
         )
     }
