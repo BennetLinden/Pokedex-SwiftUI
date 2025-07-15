@@ -11,6 +11,8 @@ struct PokemonHeaderView: View {
     let name: String
     let id: Int
     let types: [PokemonType]
+    let isLegendary: Bool
+    let isMythical: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -26,6 +28,14 @@ struct PokemonHeaderView: View {
             }
             
             HStack {
+                if isLegendary {
+                    PokemonRarityView(rarity: .legendary)
+                }
+
+                if isMythical {
+                    PokemonRarityView(rarity: .mythical)
+                }
+                
                 ForEach(types) { type in
                     PokemonTypeView(pokemonType: type)
                 }

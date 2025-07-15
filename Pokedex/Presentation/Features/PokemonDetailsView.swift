@@ -20,7 +20,9 @@ struct PokemonDetailsView: View {
                 PokemonHeaderView(
                     name: pokemonReference.name,
                     id: pokemonReference.id,
-                    types: pokemon?.types.map(\.type) ?? []
+                    types: pokemon?.types.map(\.type) ?? [],
+                    isLegendary: pokemon?.isLegendary ?? false,
+                    isMythical: pokemon?.isMythical ?? false
                 )
                 
                 AsyncImage(url: pokemon?.imageURL) { phase in
