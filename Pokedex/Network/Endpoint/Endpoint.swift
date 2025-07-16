@@ -15,15 +15,7 @@ enum EndpointError: Error {
 struct Endpoint: URLConvertible {
     let baseUrl: URL
     let path: String
-    var queryItems: [URLQueryItem]?
-}
-
-extension Endpoint {
-    func append(queryItems: [URLQueryItem]) -> Endpoint {
-        var copy = self
-        copy.queryItems = (copy.queryItems ?? []) + queryItems
-        return copy
-    }
+    var queryItems: [URLQueryItem] = []
 }
 
 extension Endpoint {
