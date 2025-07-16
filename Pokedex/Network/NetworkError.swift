@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 enum NetworkError: Error {
-//    case authentication(AuthenticationError)
+    case authentication(AuthenticationError)
     case unacceptableStatusCode(Int, data: Data?)
     case responseDecodingFailed(DecodingError)
     case timedOut
@@ -26,7 +26,7 @@ enum NetworkError: Error {
             NetworkError.cannotConnectToHost,
             NetworkError.networkConnectionLost,
         ]
-            .contains(self)
+        .contains(self)
     }
 
     init(_ error: Error, responseData: Data? = nil) {
@@ -34,8 +34,8 @@ enum NetworkError: Error {
         case AFError.responseValidationFailed(reason: .customValidationFailed(let networkError as NetworkError)):
             self = networkError
 
-//        case AFError.responseValidationFailed(reason: .unacceptableStatusCode(401)):
-//            self = .authentication(.unauthorized)
+        case AFError.responseValidationFailed(reason: .unacceptableStatusCode(401)):
+            self = .authentication(.unauthorized)
 
         case AFError.responseValidationFailed(reason: .unacceptableStatusCode(let statusCode)):
             self = .unacceptableStatusCode(statusCode, data: responseData)
@@ -43,8 +43,8 @@ enum NetworkError: Error {
         case AFError.responseSerializationFailed(reason: .decodingFailed(let decodingError as DecodingError)):
             self = .responseDecodingFailed(decodingError)
 
-//        case AFError.requestAdaptationFailed(error: Alamofire.AuthenticationError.missingCredential):
-//            self = .authentication(.missingCredential)
+        case AFError.requestAdaptationFailed(error: Alamofire.AuthenticationError.missingCredential):
+            self = .authentication(.missingCredential)
 
         case AFError.requestAdaptationFailed(error: let error as NetworkError):
             self = error
@@ -52,14 +52,14 @@ enum NetworkError: Error {
         case AFError.requestAdaptationFailed(error: let error):
             self = NetworkError(error, responseData: responseData)
 
-//        case AFError.requestRetryFailed(retryError: Alamofire.AuthenticationError.missingCredential, _):
-//            self = .authentication(.missingCredential)
-//
-//        case AFError.requestRetryFailed(retryError: Alamofire.AuthenticationError.excessiveRefresh, _):
-//            self = .authentication(.excessiveRefresh)
+        case AFError.requestRetryFailed(retryError: Alamofire.AuthenticationError.missingCredential, _):
+            self = .authentication(.missingCredential)
 
-//        case AFError.requestRetryFailed(retryError: NetworkError.authentication(.refreshTokenExpiredOrInvalid), _):
-//            self = .authentication(.refreshTokenExpiredOrInvalid)
+        case AFError.requestRetryFailed(retryError: Alamofire.AuthenticationError.excessiveRefresh, _):
+            self = .authentication(.excessiveRefresh)
+
+        case AFError.requestRetryFailed(retryError: NetworkError.authentication(.refreshTokenExpiredOrInvalid), _):
+            self = .authentication(.refreshTokenExpiredOrInvalid)
 
         case AFError.requestRetryFailed(_, originalError: let error as NetworkError):
             self = error
@@ -91,8 +91,8 @@ enum NetworkError: Error {
 extension NetworkError: Equatable {
     static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
         switch (lhs, rhs) {
-//        case (.authentication(let lhsAuthenticationError), .authentication(let rhsAuthenticationError)):
-//            return lhsAuthenticationError == rhsAuthenticationError
+        case (.authentication(let lhsAuthenticationError), .authentication(let rhsAuthenticationError)):
+            return lhsAuthenticationError == rhsAuthenticationError
 
         case (.responseDecodingFailed, .responseDecodingFailed),
             (.timedOut, .timedOut),
