@@ -9,6 +9,8 @@ import Alamofire
 import Foundation
 
 struct GetPokemonReferencesRequest: DictionaryNetworkRequest {
+    let limit: Int
+    
     var method: HTTPMethod {
         .get
     }
@@ -18,8 +20,6 @@ struct GetPokemonReferencesRequest: DictionaryNetworkRequest {
     }
     
     var parameters: Parameters {
-        ["limit": 151]
+        ["limit": limit]
     }
-    
-    let limit: Int
 }
