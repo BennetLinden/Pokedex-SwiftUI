@@ -7,6 +7,29 @@
 
 import Foundation
 
+enum GetPokemonReferencesError: Error {
+    case network(NetworkError)
+    case error(Error)
+    
+    init(_ error: Error) {
+        switch error {
+        case let error as NetworkError:
+            self = .network(error)
+        default:
+            self = .error(error)
+        }
+    }
+}
+
+extension GetPokemonReferencesError: AlertConvertible {
+    func asAlert(retryAction: (() -> Void)?) -> Alert {
+        Alert(
+            title: "Error",
+            message: "Try again!"
+        )
+    }
+}
+
 struct GetPokemonReferencesUseCase {
     private let pokemonService: PokemonService
     
@@ -19,9 +42,14 @@ struct GetPokemonReferencesUseCase {
         self.init(pokemonService: pokemonService)
     }
     
-    func callAsFunction() async throws -> [PokemonReference] {
-        try await pokemonService.getPokemonReferences()
-            .results
-            .map(PokemonReference.init)
+    func callAsFunction() async throws(GetPokemonReferencesError) -> [PokemonReference] {
+        throw GetPokemonReferencesError.network(.cannotConnectToHost)
+        do {
+            return try await pokemonService.getPokemonReferences()
+                .results
+                .map(PokemonReference.init)
+        } catch {
+            throw GetPokemonReferencesError(error)
+        }
     }
 }

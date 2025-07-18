@@ -11,7 +11,8 @@ struct HomeView: View {
     private let getPokemonReferences = GetPokemonReferencesUseCase()
     
     @State private var pokemon: [PokemonReference] = []
-    
+    @State private var alert: Alert?
+
     var body: some View {
         NavigationStack {
             PokemonGridView(
@@ -25,14 +26,19 @@ struct HomeView: View {
                     pokemonReference: pokemonReference
                 )
             }
-        }
-        .tint(.gray01)
-        .task {
-            do {
-                pokemon = try await getPokemonReferences()
-            } catch {
-                print(error)
+            .tint(.gray01)
+            .task {
+                await loadPokemonReferences()
             }
+            .alert($alert)
+        }
+    }
+    
+    private func loadPokemonReferences() async {
+        do {
+            pokemon = try await getPokemonReferences()
+        } catch {
+            alert = error.asAlert(retryAction: nil)
         }
     }
 }
