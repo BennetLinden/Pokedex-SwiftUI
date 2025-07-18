@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var loadPokemonReferencesTask = TaskIdentifier()
     private let getPokemonReferences = GetPokemonReferencesUseCase()
     
     @State private var pokemon: [PokemonReference] = []
@@ -27,7 +28,7 @@ struct HomeView: View {
                 )
             }
             .tint(.gray01)
-            .task {
+            .task(id: loadPokemonReferencesTask) {
                 await loadPokemonReferences()
             }
             .alert($alert)
@@ -38,7 +39,11 @@ struct HomeView: View {
         do {
             pokemon = try await getPokemonReferences()
         } catch {
-            alert = error.asAlert(retryAction: nil)
+            alert = error.asAlert(
+                retryAction: {
+                    loadPokemonReferencesTask.restart()
+                }
+            )
         }
     }
 }

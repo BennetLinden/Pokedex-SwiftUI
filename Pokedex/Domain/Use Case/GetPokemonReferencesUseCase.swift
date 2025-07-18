@@ -48,7 +48,6 @@ struct GetPokemonReferencesUseCase {
     }
     
     func callAsFunction() async throws(GetPokemonReferencesError) -> [PokemonReference] {
-        throw GetPokemonReferencesError.network(.cannotConnectToHost)
         do {
             return try await pokemonService.getPokemonReferences()
                 .results
