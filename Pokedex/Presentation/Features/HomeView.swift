@@ -27,12 +27,12 @@ struct HomeView: View {
                     pokemonReference: pokemonReference
                 )
             }
-            .tint(.gray01)
             .task(id: loadPokemonReferencesTask) {
                 await loadPokemonReferences()
             }
             .alert($alert)
         }
+        .tint(.gray01)
     }
     
     private func loadPokemonReferences() async {
