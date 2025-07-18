@@ -23,10 +23,15 @@ enum GetPokemonReferencesError: Error {
 
 extension GetPokemonReferencesError: AlertConvertible {
     func asAlert(retryAction: (() -> Void)?) -> Alert {
-        Alert(
-            title: "Error",
-            message: "Try again!"
-        )
+        switch self {
+        case .network(let networkError):
+            Alert.Error.network(
+                error: networkError,
+                retryAction: retryAction
+            )
+        case .error:
+            Alert.Error.general
+        }
     }
 }
 
