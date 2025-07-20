@@ -12,7 +12,11 @@ struct PokemonDetailsView: View {
     
     let pokemonReference: PokemonReference
     
+    @State private var loadPokemonTask = TaskIdentifier()
+    
     @State private var pokemon: Pokemon?
+    
+    @State private var alert: Alert?
     
     var body: some View {
         ScrollView {
@@ -49,15 +53,23 @@ struct PokemonDetailsView: View {
             }
             .padding()
         }
-        .task {
-            do {
-                pokemon = try await getPokemonDetails(
-                    from: pokemonReference.url
-                )
-                print(pokemon!)
-            } catch {
-                print(error)
-            }
+        .task(id: loadPokemonTask) {
+            await loadPokemonDetails()
+        }
+        .alert($alert)
+    }
+    
+    private func loadPokemonDetails() async {
+        do {
+            pokemon = try await getPokemonDetails(
+                from: pokemonReference.url
+            )
+        } catch {
+            alert = error.asAlert(
+                retryAction: {
+                    loadPokemonTask.restart()
+                }
+            )
         }
     }
 }
