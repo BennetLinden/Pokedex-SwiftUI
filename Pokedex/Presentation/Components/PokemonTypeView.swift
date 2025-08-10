@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct PokemonTypeView: View {
+    @Environment(\.redactionReasons) var redactionReason
+    
+    private var color: Color {
+        if redactionReason == .placeholder {
+            Color.gray04
+        } else {
+            Color("Types/\(pokemonType.name)")
+        }
+    }
+    
     let pokemonType: PokemonType
     
     var body: some View {
         HStack {
             Circle()
-                .foregroundStyle(Color("Types/\(pokemonType.name)"))
+                .foregroundStyle(color)
                 .frame(width: 12)
                 .aspectRatio(1, contentMode: .fit)
             

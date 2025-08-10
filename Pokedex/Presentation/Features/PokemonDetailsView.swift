@@ -13,23 +13,32 @@ struct PokemonDetailsView: View {
     let pokemonReference: PokemonReference
     
     @State private var loadPokemonTask = TaskIdentifier()
-    
-    @State private var pokemon: Pokemon?
-    
+    @State private var state: ViewState<Pokemon> = .loading
     @State private var alert: Alert?
     
     var body: some View {
         ScrollView {
             VStack {
-                PokemonHeaderView(
-                    name: pokemonReference.name,
-                    id: pokemonReference.id,
-                    types: pokemon?.types.map(\.type) ?? [],
-                    isLegendary: pokemon?.isLegendary ?? false,
-                    isMythical: pokemon?.isMythical ?? false
-                )
+                VStack(alignment: .leading, spacing: 8) {
+                    PokemonHeaderView(
+                        name: pokemonReference.name,
+                        id: pokemonReference.id
+                    )
+                    
+                    StateView(
+                        state: state
+                    ) { pokemon in
+                        PokemonTypesRow(
+                            types: pokemon.types.map(\.type),
+                            isLegendary: pokemon.isLegendary,
+                            isMythical: pokemon.isMythical
+                        )
+                    } loading: {
+                        PokemonTypesRow.placeholder
+                    }
+                }
                 
-                AsyncImage(url: pokemon?.imageURL) { phase in
+                AsyncImage(url: state.content?.imageURL) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -43,10 +52,12 @@ struct PokemonDetailsView: View {
                         EmptyView()
                     }
                 }
-                .frame(maxHeight: .infinity, alignment: .top)
+                .frame(maxHeight: .infinity)
                 .aspectRatio(1.0, contentMode: .fit)
                 
-                if let pokemon {
+                StateView(
+                    state: state
+                ) { pokemon in
                     PokemonAboutView(pokemon: pokemon)
                         .padding(.bottom, 24)
                 }
@@ -61,15 +72,19 @@ struct PokemonDetailsView: View {
     
     private func loadPokemonDetails() async {
         do {
-            pokemon = try await getPokemonDetails(
-                from: pokemonReference.url
-            )
-        } catch {
+            try await withThrowingViewState($state) {
+                try await getPokemonDetails(
+                    from: pokemonReference.url
+                )
+            }
+        } catch let error as AlertConvertible {
             alert = error.asAlert(
                 retryAction: {
                     loadPokemonTask.restart()
                 }
             )
+        } catch {
+            alert = .Error.general
         }
     }
 }

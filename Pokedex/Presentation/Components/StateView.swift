@@ -7,12 +7,7 @@
 
 import SwiftUI
 
-enum ViewState<Content> {
-    case content(Content)
-    case loading
-    case empty
-    case error(Error)
-}
+
 
 struct StateView<
     Content,
