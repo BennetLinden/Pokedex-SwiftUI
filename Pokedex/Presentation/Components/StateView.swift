@@ -7,33 +7,27 @@
 
 import SwiftUI
 
-
-
 struct StateView<
     Content,
-    ContentStateView: View,
-    LoadingStateView: View,
-    EmptyStateView: View,
-    ErrorStateView: View
+    ContentView: View,
+    LoadingView: View,
+    ErrorView: View
 >: View {
     private let state: ViewState<Content>
-    private let contentView: (Content) -> ContentStateView
-    private let loadingView: () -> LoadingStateView
-    private let emptyView: () -> EmptyStateView
-    private let errorView: (Error) -> ErrorStateView
+    private let contentView: (Content) -> ContentView
+    private let loadingView: () -> LoadingView
+    private let errorView: (Error) -> ErrorView
 
     init(
         state: ViewState<Content>,
-        @ViewBuilder content: @escaping (Content) -> ContentStateView,
-        @ViewBuilder loading: @escaping () -> LoadingStateView = { EmptyView() },
-        @ViewBuilder empty: @escaping () -> EmptyStateView = { EmptyView() },
-        @ViewBuilder error: @escaping (Error) -> ErrorStateView = { _ in EmptyView() }
+        @ViewBuilder content contentView: @escaping (Content) -> ContentView,
+        @ViewBuilder loading loadingView: @escaping () -> LoadingView = { EmptyView() },
+        @ViewBuilder error errorView: @escaping (Error) -> ErrorView = { _ in EmptyView() }
     ) {
         self.state = state
-        contentView = content
-        loadingView = loading
-        emptyView = empty
-        errorView = error
+        self.contentView = contentView
+        self.loadingView = loadingView
+        self.errorView = errorView
     }
 
     var body: some View {
@@ -42,8 +36,6 @@ struct StateView<
             contentView(content)
         case .loading:
             loadingView()
-        case .empty:
-            emptyView()
         case .error(let error):
             errorView(error)
         }
