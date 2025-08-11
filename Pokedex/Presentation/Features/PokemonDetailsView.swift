@@ -13,7 +13,7 @@ struct PokemonDetailsView: View {
     let pokemonReference: PokemonReference
     
     @State private var loadPokemonTask = TaskIdentifier()
-    @State private var state: ViewState<Pokemon> = .loading
+    @State private var state: ViewState<Pokemon> = .loading()
     @State private var alert: Alert?
     
     var body: some View {

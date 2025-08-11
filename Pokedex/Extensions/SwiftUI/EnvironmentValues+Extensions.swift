@@ -17,3 +17,14 @@ extension EnvironmentValues {
         set { self[IsLoadingKey.self] = newValue }
     }
 }
+
+extension EnvironmentValues {
+    private struct ViewStateEnvironmentKey: EnvironmentKey {
+        static let defaultValue = ViewStateEnvironment()
+    }
+    
+    var viewState: ViewStateEnvironment {
+        get { self[ViewStateEnvironmentKey.self] }
+        set { self[ViewStateEnvironmentKey.self] = newValue }
+    }
+}

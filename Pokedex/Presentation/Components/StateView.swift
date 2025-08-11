@@ -29,15 +29,30 @@ struct StateView<
         self.loadingView = loadingView
         self.errorView = errorView
     }
+    
+    private var viewStateEnvironment: ViewStateEnvironment {
+        ViewStateEnvironment(
+            isRefreshing: state.isRefreshing,
+            error: state.errorWithPreviousContent,
+            lastUpdatedAt: state.lastUpdatedAt
+        )
+    }
 
     var body: some View {
-        switch state {
-        case .content(let content):
-            contentView(content)
-        case .loading:
-            loadingView()
-        case .error(let error):
-            errorView(error)
+        Group {
+            switch state {
+            case .content(let content, _):
+                contentView(content)
+            case .loading(let previousContent?):
+                contentView(previousContent.content)
+            case .loading:
+                loadingView()
+            case .error(_ , let previousContent?):
+                contentView(previousContent.content)
+            case .error(let error, _):
+                errorView(error)
+            }
         }
+        .environment(\.viewState, viewStateEnvironment)
     }
 }
