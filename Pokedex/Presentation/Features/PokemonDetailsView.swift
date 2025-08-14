@@ -14,6 +14,7 @@ struct PokemonDetailsView: View {
     
     @State private var loadPokemonTask = TaskIdentifier()
     @State private var state: ViewState<Pokemon> = .loading()
+    @State private var selectedTab: PokemonDetailsTab = .about
     @State private var alert: Alert?
     
     var body: some View {
@@ -54,6 +55,9 @@ struct PokemonDetailsView: View {
                 }
                 .frame(maxHeight: .infinity)
                 .aspectRatio(1.0, contentMode: .fit)
+                .padding(.horizontal, 12)
+                
+                PokemonDetailsTabSwitcher(selectedTab: $selectedTab)
                 
                 StateView(
                     state: state
@@ -85,6 +89,52 @@ struct PokemonDetailsView: View {
             )
         } catch {
             alert = .Error.general
+        }
+    }
+}
+
+enum PokemonDetailsTab: String, CaseIterable {
+    case about = "About"
+    case stats = "Stats"
+    case evolution = "Evolution"
+}
+
+struct PokemonDetailsTabSwitcher: View {
+    @Binding var selectedTab: PokemonDetailsTab
+    @Namespace private var underlineNamespace
+
+    var body: some View {
+        HStack(alignment: .top) {
+            ForEach(PokemonDetailsTab.allCases, id: \.self) { tab in
+                VStack(spacing: 8) {
+                    Button(action: {
+                        withAnimation(.easeOut(duration: 0.25)) {
+                            selectedTab = tab
+                        }
+                    }) {
+                        Text(tab.rawValue)
+                            .font(.system(
+                                size: 16,
+                                weight: selectedTab == tab ? .semibold : .medium
+                            ))
+                            .foregroundStyle(selectedTab == tab ? .gray01 : .gray03)
+                            .frame(maxWidth: .infinity)
+                    }
+                    
+                    if selectedTab == tab {
+                        Capsule()
+                            .fill(Color.purple)
+                            .frame(height: 3)
+                            .matchedGeometryEffect(id: "underline", in: underlineNamespace)
+                    }
+                }
+            }
+        }
+        .background(alignment: .bottom) {
+            Capsule()
+                .fill(Color.gray06)
+                .frame(height: 3)
+        
         }
     }
 }
