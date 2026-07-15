@@ -1,0 +1,32 @@
+{
+    "id": 4,
+    "name": "charmander",
+    "height": 6,
+    "weight": 85,
+    "species": {
+        "name": "charmander",
+        "url": "https://pokeapi.co/api/v2/pokemon-species/4/"
+    },
+    "sprites": {
+        "other": {
+            "official-artwork": {
+                "front_default": null
+            }
+        }
+    },
+    "types": [
+        {
+            "slot": 1,
+            "type": {
+                "name": "fire",
+                "url": "https://pokeapi.co/api/v2/type/10/"
+            }
+        },
+        {
+            "slot": 2,
+            "type": {
+                "name": "mystery", "url": "https://pokeapi.co/api/v2/type/999/"
+            }
+        }
+    ]
+}
