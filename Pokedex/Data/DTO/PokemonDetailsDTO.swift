@@ -15,7 +15,10 @@ struct PokemonDetailsDTO: Decodable {
     let species: NamedResourceDTO
     let sprites: PokemonSpritesDTO
     let types: [NamedResourceDTO]
-    
+}
+
+extension PokemonDetailsDTO {
+
     enum RootCodingKeys: String, CodingKey {
         case id, name, height, weight, species, sprites, types
     }
@@ -46,5 +49,3 @@ struct PokemonDetailsDTO: Decodable {
         self.types = types
     }
 }
-
-

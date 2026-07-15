@@ -9,6 +9,9 @@ import Foundation
 
 struct PokemonSpritesDTO: Decodable {
     let officialArtworkURL: URL?
+}
+
+extension PokemonSpritesDTO {
 
     private enum RootCodingKeys: String, CodingKey {
         case other
