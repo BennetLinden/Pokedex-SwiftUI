@@ -23,8 +23,7 @@ struct AlertViewModifier: ViewModifier {
     }
   
     func body(content: Content) -> some View {
-        content
-            .alert(
+        content.alert(
             alert?.title ?? "",
             isPresented: isPresented,
             presenting: alert
