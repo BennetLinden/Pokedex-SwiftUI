@@ -14,7 +14,7 @@ import Foundation
 @Suite struct PokemonDetailsDTODecodingTests {
 
     @Test func decodesCoreFieldsAndNestedTypes() throws {
-        let data = try JSONData.load(file: "bulbasaur_details")
+        let data = try TestJSONLoader.load(file: "bulbasaur_details")
         let details = try JSONDecoder.default.decode(PokemonDetailsDTO.self, from: data)
 
         #expect(details.id == 1)
@@ -27,7 +27,7 @@ import Foundation
     }
 
     @Test func decodesNullArtworkAndArbitraryTypeNames() throws {
-        let data = try JSONData.load(file: "charmander_details_unknown_type")
+        let data = try TestJSONLoader.load(file: "charmander_details_unknown_type")
         let details = try JSONDecoder.default.decode(PokemonDetailsDTO.self, from: data)
 
         #expect(details.sprites.officialArtworkURL == nil)

@@ -1,15 +1,14 @@
 //
-//  JSONData.swift
+//  TestJSONLoader.swift
 //  PokedexTests
 //
-//  Loads raw JSON data for a named file from the test bundle. Decoding is left to
-//  the caller (e.g. `JSONDecoder.default`).
+//  Created by Bennet van der Linden on 15/07/2026.
 //
 
 import Foundation
 
-enum JSONData {
-    enum JSONDataError: Error, CustomStringConvertible {
+enum TestJSONLoader {
+    enum TestJSONLoaderError: Error, CustomStringConvertible {
         case resourceNotFound(String)
 
         var description: String {
@@ -26,7 +25,7 @@ enum JSONData {
     static func load(file: String) throws -> Data {
         let bundle = Bundle(for: BundleToken.self)
         guard let url = bundle.url(forResource: file, withExtension: "json") else {
-            throw JSONDataError.resourceNotFound(file)
+            throw TestJSONLoaderError.resourceNotFound(file)
         }
         return try Data(contentsOf: url)
     }

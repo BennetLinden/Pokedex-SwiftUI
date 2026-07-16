@@ -10,7 +10,7 @@ import Foundation
 @Suite struct PokemonSpeciesDTODecodingTests {
 
     @Test func decodesNonLegendarySpecies() throws {
-        let data = try JSONData.load(file: "bulbasaur_species")
+        let data = try TestJSONLoader.load(file: "bulbasaur_species")
         let species = try JSONDecoder.default.decode(PokemonSpeciesDTO.self, from: data)
 
         #expect(species.id == 1)
@@ -20,7 +20,7 @@ import Foundation
     }
 
     @Test func decodesLegendarySpecies() throws {
-        let data = try JSONData.load(file: "mewtwo_species")
+        let data = try TestJSONLoader.load(file: "mewtwo_species")
         let species = try JSONDecoder.default.decode(PokemonSpeciesDTO.self, from: data)
 
         #expect(species.isLegendary == true)

@@ -12,7 +12,7 @@ import Foundation
 @Suite struct ResultsDTODecodingTests {
 
     @Test func decodesNamedResourceResults() throws {
-        let data = try JSONData.load(file: "pokemon_references")
+        let data = try TestJSONLoader.load(file: "pokemon_references")
         let results = try JSONDecoder.default.decode(ResultsDTO<[NamedResourceDTO]>.self, from: data)
 
         #expect(results.results.map(\.name) == ["bulbasaur", "ivysaur"])
