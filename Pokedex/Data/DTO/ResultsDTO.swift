@@ -10,3 +10,5 @@ import Foundation
 struct ResultsDTO<Results: Decodable>: Decodable {
     let results: Results
 }
+
+extension ResultsDTO: Equatable where Results: Equatable {}

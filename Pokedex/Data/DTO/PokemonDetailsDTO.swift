@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonDetailsDTO: Decodable {
+struct PokemonDetailsDTO: Decodable, Equatable {
     let id: Int
     let name: String
     let height: Int // The height of this Pokémon in decimetres.

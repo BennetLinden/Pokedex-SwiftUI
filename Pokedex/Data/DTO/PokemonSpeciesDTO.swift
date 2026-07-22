@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonSpeciesDTO: Decodable {
+struct PokemonSpeciesDTO: Decodable, Equatable {
     let id: Int
     let name: String
 //    let evolutionChain: EvolutionChainLink

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonSpritesDTO: Decodable {
+struct PokemonSpritesDTO: Decodable, Equatable {
     let officialArtworkURL: URL?
 }
 
